@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фигурное катание - {% block title %}Главная{% endblock %}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <span class="navbar-brand">️⛸ FS Elements</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Переключатель навигации">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">Главная</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="jumpsDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Прыжки
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="jumpsDropdown">
+                            <li><a class="dropdown-item" href="{{ url_for('show_element', element_id='axel') }}">Аксель</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('show_element', element_id='salchow') }}">Сальхов</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('show_element', element_id='toeloop') }}">Тулуп</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('show_element', element_id='loop') }}">Риттбергер</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('show_element', element_id='flip') }}">Флип</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('show_element', element_id='lutz') }}">Лутц</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="spinsDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Вращения
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="spinsDropdown">
+                            <li><h6 class="dropdown-header">Стоя</h6></li>
+                            <li><a class="dropdown-item" href="{{ url_for('show_element', element_id='upright_spin') }}">Винт</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('show_element', element_id='layback_spin') }}">Заклон</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><h6 class="dropdown-header">Сидя</h6></li>
+                            <li><a class="dropdown-item" href="{{ url_for('show_element', element_id='sit_spin') }}">Волчок</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('show_element', element_id='cannonball') }}">Складка</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('show_element', element_id='side_sit_spin') }}">Боковой волчок</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><h6 class="dropdown-header">Стоя (сложные позиции)</h6></li>
+                            <li><a class="dropdown-item" href="{{ url_for('show_element', element_id='camel_spin') }}">Либела</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('show_element', element_id='rooster_spin') }}">Петушок</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('show_element', element_id='ring_spin') }}">Кольцо</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="stepsDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Дорожки
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="stepsDropdown">
+                            <li><a class="dropdown-item" href="{{ url_for('show_element', element_id='step_sequence') }}">Дорожка шагов</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('show_element', element_id='spiral') }}">Спираль</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-4">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-light text-center text-muted py-3 mt-auto">
+        <div class="container">
+            <small> 2026 Фигурное катание.</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
